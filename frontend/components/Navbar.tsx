@@ -180,7 +180,9 @@ const Navbar = ({ theme = 'dark' }: NavbarProps) => {
               );
             })}
 
-            <div className={`pt-4 flex flex-col space-y-4 border-t ${isLight ? 'border-slate-200' : 'border-white/10'}`}>
+            <div
+              className={`pt-4 flex flex-col space-y-4 border-t ${isLight ? 'border-slate-200' : 'border-white/10'}`}
+            >
               <Link
                 href="/login"
                 className={`text-lg font-medium transition-colors ${
