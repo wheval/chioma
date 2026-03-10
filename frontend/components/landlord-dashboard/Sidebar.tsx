@@ -7,6 +7,7 @@ import { FaScrewdriverWrench, FaArrowRightFromBracket } from 'react-icons/fa6';
 import { HiSquares2X2, HiUsers } from 'react-icons/hi2';
 import { IoDocumentTextSharp } from 'react-icons/io5';
 import { IoMdSettings, IoMdNotifications } from 'react-icons/io';
+import { MdGavel, MdReviews } from 'react-icons/md';
 
 export const navItems = [
   { icon: HiSquares2X2, label: 'Dashboard', href: '/landlords' },
@@ -28,6 +29,8 @@ export const navItems = [
     label: 'Notifications',
     href: '/landlords/notifications',
   },
+  { icon: MdGavel, label: 'Disputes', href: '/landlords/disputes' },
+  { icon: MdReviews, label: 'Reviews', href: '/landlords/reviews' },
   { icon: IoMdSettings, label: 'Settings', href: '/landlords/settings' },
 ];
 
