@@ -35,18 +35,18 @@ export function ReviewList({
   };
 
   return (
-    <div className="py-8 w-full max-w-5xl mx-auto flex flex-col gap-10">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-4">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 py-2 sm:py-4">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-gray-900 font-sans tracking-tight mb-2">
+          <h2 className="mb-2 text-3xl font-bold tracking-tight text-slate-900">
             {title}
           </h2>
-          <p className="text-gray-600 text-lg">{subtitle}</p>
+          <p className="max-w-2xl text-base text-slate-600">{subtitle}</p>
         </div>
         {!showForm && (
           <button
             onClick={() => setShowForm(true)}
-            className="flex items-center gap-2 px-6 py-3 rounded-full font-bold text-brand-blue bg-blue-50 hover:bg-blue-100 transition-colors duration-200 border border-blue-200 shadow-xs"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
           >
             <PencilLine className="w-5 h-5" />
             Write a Review
@@ -66,7 +66,7 @@ export function ReviewList({
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+      <div className="grid grid-cols-1 gap-6 pt-2 md:grid-cols-2">
         {reviews.length > 0 ? (
           reviews.map((review) => (
             <div key={review.id} className="h-full">
@@ -74,7 +74,7 @@ export function ReviewList({
             </div>
           ))
         ) : (
-          <div className="col-span-full py-12 text-center text-gray-500 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
+          <div className="col-span-full rounded-2xl border border-dashed border-slate-200 bg-slate-50 py-12 text-center text-slate-500">
             <p className="text-lg font-medium">No reviews yet.</p>
             <p className="text-sm">Be the first to share your experience!</p>
           </div>

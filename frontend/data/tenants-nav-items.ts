@@ -2,10 +2,12 @@ import { navItems } from '@/types/sidebar-items';
 import {
   Construction,
   Contact,
+  Flag,
   Home,
   HousePlus,
+  MessageSquareQuote,
+  Receipt,
   Settings,
-  Wallet,
 } from 'lucide-react';
 
 export const tenantNavItems: navItems[] = [
@@ -30,9 +32,19 @@ export const tenantNavItems: navItems[] = [
     icon: Construction,
   },
   {
-    name: 'Wallet',
-    href: '/#',
-    icon: Wallet,
+    name: 'Payments',
+    href: '/tenant/payments',
+    icon: Receipt,
+  },
+  {
+    name: 'Disputes',
+    href: '/tenant/disputes',
+    icon: Flag,
+  },
+  {
+    name: 'Reviews',
+    href: '/tenant/reviews',
+    icon: MessageSquareQuote,
   },
   {
     name: 'Settings',
