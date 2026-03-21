@@ -51,7 +51,7 @@ export default function LoginPage() {
     } else {
       router.push('/');
     }
-  }, [isAuthenticated, user, router, searchParams]);
+  }, [isAuthenticated, user, router]);
 
   const onSubmit = async (data: LoginFormData) => {
     setServerError(null);
