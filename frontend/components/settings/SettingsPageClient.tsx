@@ -465,25 +465,25 @@ export function SettingsPageClient({
   };
 
   const content = (
-    <main className={embedded ? '' : 'min-h-screen bg-gray-100 p-4 md:p-6'}>
+    <main className={embedded ? '' : 'min-h-screen p-4 md:p-6'}>
       <div className={embedded ? 'space-y-6' : 'mx-auto max-w-5xl space-y-6'}>
         <header>
-          <h1 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+          <h1 className="text-2xl font-bold text-white md:text-3xl">
             Settings & Preferences
           </h1>
-          <p className="mt-1 text-sm text-neutral-600">
+          <p className="mt-1 text-sm text-blue-200/60">
             Manage your security, notification delivery, appearance, and
             regional preferences.
           </p>
         </header>
 
         {statusMessage && (
-          <div className="rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-700">
+          <div className="rounded-xl border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-300">
             {statusMessage}
           </div>
         )}
         {errorMessage && (
-          <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <div className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
             {errorMessage}
           </div>
         )}
@@ -600,7 +600,7 @@ export function SettingsPageClient({
               }
             />
           </div>
-          <div className="mt-4 rounded-xl bg-neutral-50 px-4 py-3 text-sm text-neutral-700">
+          <div className="mt-4 rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-blue-200/70">
             In-app summary: {enabledEmailCount} email types and{' '}
             {enabledPushCount} push types are currently enabled.
           </div>
@@ -623,10 +623,7 @@ export function SettingsPageClient({
         >
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <label
-                htmlFor="language"
-                className="mb-2 block text-sm font-medium text-neutral-900"
-              >
+              <label htmlFor="language" className="mb-2 block text-sm font-medium text-white">
                 Language
               </label>
               <select
@@ -634,12 +631,9 @@ export function SettingsPageClient({
                 value={preferences.language}
                 disabled={isSavingPreferences}
                 onChange={(event) =>
-                  updatePreference({
-                    ...preferences,
-                    language: event.target.value,
-                  })
+                  updatePreference({ ...preferences, language: event.target.value })
                 }
-                className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50"
               >
                 {LANGUAGE_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -649,10 +643,7 @@ export function SettingsPageClient({
               </select>
             </div>
             <div>
-              <label
-                htmlFor="currency"
-                className="mb-2 block text-sm font-medium text-neutral-900"
-              >
+              <label htmlFor="currency" className="mb-2 block text-sm font-medium text-white">
                 Preferred currency
               </label>
               <select
@@ -660,12 +651,9 @@ export function SettingsPageClient({
                 value={preferences.currency}
                 disabled={isSavingPreferences}
                 onChange={(event) =>
-                  updatePreference({
-                    ...preferences,
-                    currency: event.target.value,
-                  })
+                  updatePreference({ ...preferences, currency: event.target.value })
                 }
-                className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue"
+                className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50"
               >
                 {CURRENCY_OPTIONS.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -688,10 +676,7 @@ export function SettingsPageClient({
           >
             <div className="grid gap-4 md:grid-cols-3">
               <div>
-                <label
-                  htmlFor="currentPassword"
-                  className="mb-2 block text-sm font-medium text-neutral-900"
-                >
+                <label htmlFor="currentPassword" className="mb-2 block text-sm font-medium text-white">
                   Current password
                 </label>
                 <input
@@ -699,19 +684,14 @@ export function SettingsPageClient({
                   type="password"
                   autoComplete="current-password"
                   {...register('currentPassword')}
-                  className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 placeholder:text-white/20"
                 />
                 {errors.currentPassword && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.currentPassword.message}
-                  </p>
+                  <p className="mt-1 text-xs text-red-400">{errors.currentPassword.message}</p>
                 )}
               </div>
               <div>
-                <label
-                  htmlFor="newPassword"
-                  className="mb-2 block text-sm font-medium text-neutral-900"
-                >
+                <label htmlFor="newPassword" className="mb-2 block text-sm font-medium text-white">
                   New password
                 </label>
                 <input
@@ -719,19 +699,14 @@ export function SettingsPageClient({
                   type="password"
                   autoComplete="new-password"
                   {...register('newPassword')}
-                  className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 placeholder:text-white/20"
                 />
                 {errors.newPassword && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.newPassword.message}
-                  </p>
+                  <p className="mt-1 text-xs text-red-400">{errors.newPassword.message}</p>
                 )}
               </div>
               <div>
-                <label
-                  htmlFor="confirmPassword"
-                  className="mb-2 block text-sm font-medium text-neutral-900"
-                >
+                <label htmlFor="confirmPassword" className="mb-2 block text-sm font-medium text-white">
                   Confirm new password
                 </label>
                 <input
@@ -739,23 +714,21 @@ export function SettingsPageClient({
                   type="password"
                   autoComplete="new-password"
                   {...register('confirmPassword')}
-                  className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 placeholder:text-white/20"
                 />
                 {errors.confirmPassword && (
-                  <p className="mt-1 text-xs text-red-600">
-                    {errors.confirmPassword.message}
-                  </p>
+                  <p className="mt-1 text-xs text-red-400">{errors.confirmPassword.message}</p>
                 )}
               </div>
             </div>
 
-            <div className="rounded-xl bg-neutral-50 p-3">
-              <p className="mb-2 text-xs font-medium text-neutral-700">
+            <div className="rounded-xl bg-white/5 border border-white/10 p-3">
+              <p className="mb-2 text-xs font-medium text-blue-200/70">
                 Password strength: {strength.label}
               </p>
-              <div className="h-2 w-full rounded-full bg-neutral-200">
+              <div className="h-2 w-full rounded-full bg-white/10">
                 <div
-                  className="h-2 rounded-full bg-brand-blue transition-all"
+                  className="h-2 rounded-full bg-blue-500 transition-all"
                   style={{ width: `${strength.score}%` }}
                 />
               </div>
@@ -765,7 +738,7 @@ export function SettingsPageClient({
               <button
                 type="submit"
                 disabled={isUpdatingPassword}
-                className="rounded-xl bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark disabled:cursor-not-allowed disabled:opacity-60"
+                className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:from-blue-600 hover:to-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isUpdatingPassword
                   ? 'Updating password...'
@@ -774,7 +747,7 @@ export function SettingsPageClient({
             </div>
           </form>
 
-          <div className="mt-6 border-t border-neutral-200 pt-6">
+          <div className="mt-6 border-t border-white/10 pt-6">
             <PreferenceSwitch
               id="mfa-switch"
               label="Multi-factor authentication (MFA)"
@@ -797,13 +770,10 @@ export function SettingsPageClient({
             />
 
             {mfaSetup && (
-              <div className="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
-                <h3 className="text-sm font-semibold text-neutral-900">
-                  Complete MFA setup
-                </h3>
-                <p className="mt-1 text-xs text-neutral-600">
-                  Scan the QR code with your authenticator app, then enter a
-                  generated code to confirm.
+              <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
+                <h3 className="text-sm font-semibold text-white">Complete MFA setup</h3>
+                <p className="mt-1 text-xs text-blue-200/60">
+                  Scan the QR code with your authenticator app, then enter a generated code to confirm.
                 </p>
                 {mfaSetup.qrCodeUrl && (
                   <Image
@@ -812,35 +782,29 @@ export function SettingsPageClient({
                     width={160}
                     height={160}
                     unoptimized
-                    className="mt-3 rounded-lg border border-neutral-200 bg-white p-2"
+                    className="mt-3 rounded-lg border border-white/10 bg-white p-2"
                   />
                 )}
-                <p className="mt-3 text-xs text-neutral-700">
-                  Setup key:{' '}
-                  <span className="font-mono">{mfaSetup.secret}</span>
+                <p className="mt-3 text-xs text-blue-200/70">
+                  Setup key: <span className="font-mono text-white">{mfaSetup.secret}</span>
                 </p>
-                <p className="mt-2 text-xs text-neutral-700">
-                  Backup codes:{' '}
-                  <span className="font-mono">
-                    {mfaSetup.backupCodes.join(', ')}
-                  </span>
+                <p className="mt-2 text-xs text-blue-200/70">
+                  Backup codes: <span className="font-mono text-white">{mfaSetup.backupCodes.join(', ')}</span>
                 </p>
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row">
                   <input
                     value={mfaVerificationCode}
-                    onChange={(event) =>
-                      setMfaVerificationCode(event.target.value)
-                    }
+                    onChange={(event) => setMfaVerificationCode(event.target.value)}
                     type="text"
                     inputMode="numeric"
                     placeholder="Enter 6-digit code"
-                    className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue sm:max-w-xs"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 placeholder:text-white/20 sm:max-w-xs"
                   />
                   <button
                     type="button"
                     disabled={!mfaVerificationCode.trim() || isMfaBusy}
                     onClick={() => void confirmMfaSetup()}
-                    className="rounded-xl bg-brand-blue px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-blue-dark disabled:cursor-not-allowed disabled:opacity-60"
+                    className="rounded-xl bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-2 text-sm font-semibold text-white transition-all hover:from-blue-600 hover:to-indigo-700 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     Verify & enable MFA
                   </button>
@@ -849,11 +813,9 @@ export function SettingsPageClient({
             )}
 
             {showMfaDisableFlow && mfaEnabled && (
-              <div className="mt-4 rounded-xl border border-neutral-200 bg-neutral-50 p-4">
-                <h3 className="text-sm font-semibold text-neutral-900">
-                  Disable MFA
-                </h3>
-                <p className="mt-1 text-xs text-neutral-600">
+              <div className="mt-4 rounded-xl border border-white/10 bg-white/5 p-4">
+                <h3 className="text-sm font-semibold text-white">Disable MFA</h3>
+                <p className="mt-1 text-xs text-blue-200/60">
                   Enter a valid authenticator or backup code to disable MFA.
                 </p>
                 <div className="mt-4 flex flex-col gap-3 sm:flex-row">
@@ -863,13 +825,13 @@ export function SettingsPageClient({
                     type="text"
                     inputMode="numeric"
                     placeholder="Authenticator or backup code"
-                    className="w-full rounded-xl border border-neutral-200 bg-white px-3 py-2 text-sm text-neutral-800 outline-none focus:border-brand-blue sm:max-w-xs"
+                    className="w-full rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white outline-none focus:border-blue-500 placeholder:text-white/20 sm:max-w-xs"
                   />
                   <button
                     type="button"
                     disabled={!mfaDisableCode.trim() || isMfaBusy}
                     onClick={() => void disableMfa()}
-                    className="rounded-xl bg-red-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="rounded-xl bg-red-500/80 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-red-500 disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     Disable MFA
                   </button>

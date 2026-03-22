@@ -18,14 +18,11 @@ export function PreferenceSwitch({
   return (
     <div className="flex items-start justify-between gap-4 py-3">
       <div>
-        <label
-          htmlFor={id}
-          className="block text-sm font-medium text-neutral-900"
-        >
+        <label htmlFor={id} className="block text-sm font-medium text-white">
           {label}
         </label>
         {description && (
-          <p className="mt-1 text-xs text-neutral-600">{description}</p>
+          <p className="mt-1 text-xs text-blue-200/50">{description}</p>
         )}
       </div>
 
@@ -37,7 +34,7 @@ export function PreferenceSwitch({
         disabled={disabled}
         onClick={() => onChange(!checked)}
         className={`relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors ${
-          checked ? 'bg-brand-blue' : 'bg-neutral-300'
+          checked ? 'bg-blue-500' : 'bg-white/20'
         } ${disabled ? 'cursor-not-allowed opacity-60' : 'cursor-pointer'}`}
       >
         <span
