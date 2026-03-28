@@ -1,21 +1,15 @@
 import {
   Injectable,
-  NotFoundException,
-  UnauthorizedException,
-  BadRequestException,
   Logger,
+  BadRequestException,
+  UnauthorizedException,
+  NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { createHash, randomBytes } from 'crypto';
 import * as bcrypt from 'bcryptjs';
-import { randomBytes, createHash } from 'crypto';
 import { User } from './entities/user.entity';
-import { AuditService } from '../audit/audit.service';
-import {
-  AuditAction,
-  AuditLevel,
-  AuditStatus,
-} from '../audit/entities/audit-log.entity';
 import {
   UpdateUserProfileDto,
   ChangeEmailDto,
@@ -23,6 +17,12 @@ import {
 } from './dto/update-user.dto';
 import { UserRestoreDto } from './dto/user-restore.dto';
 import { KycStatus } from '../kyc/kyc-status.enum';
+import { AuditService } from '../audit/audit.service';
+import {
+  AuditAction,
+  AuditLevel,
+  AuditStatus,
+} from '../audit/entities/audit-log.entity';
 
 const SALT_ROUNDS = 12;
 
@@ -35,17 +35,6 @@ export class UsersService {
     private readonly userRepository: Repository<User>,
     private readonly auditService: AuditService,
   ) {}
-
-  async findById(id: string, withDeleted = false): Promise<User> {
-    const user = await this.userRepository.findOne({
-      where: { id },
-      withDeleted,
-    });
-    if (!user) {
-      throw new NotFoundException('User not found');
-    }
-    return user;
-  }
 
   async exportUserData(
     userId: string,
@@ -309,6 +298,21 @@ export class UsersService {
   async setKycStatus(userId: string, status: KycStatus): Promise<void> {
     await this.userRepository.update(userId, { kycStatus: status });
     this.logger.log(`KYC status updated for user ${userId}: ${status}`);
+  }
+
+  private async findById(userId: string, withDeleted = false): Promise<User> {
+    const user = await this.userRepository.findOne({
+      where: { id: userId },
+      withDeleted,
+    });
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
+  }
+
+  async getUserById(userId: string, withDeleted = false): Promise<User> {
+    return this.findById(userId, withDeleted);
   }
 
   private hashLookupValue(value: string): string {
